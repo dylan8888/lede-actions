@@ -16,9 +16,9 @@ on:
 
 
 env:
-  REPO_URL: https://github.com/DreamWalkerXZ/lede
+  REPO_URL: https://github.com/coolsnowwolf/lede.git
   REPO_BRANCH: master
-  CONFIG_FILE: .config
+  CONFIG_FILE: lede-k2p.config
   DIY_SH: diy.sh
   SSH_ACTIONS: false
   UPLOAD_BIN_DIR: true
@@ -30,7 +30,7 @@ env:
 jobs:
   build:
     runs-on: ubuntu-latest
-    if: github.event.repository.owner.id == github.event.sender.id
+    #if: github.event.repository.owner.id == github.event.sender.id
 
     steps:
     - name: Checkout
@@ -63,7 +63,7 @@ jobs:
         [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
         chmod +x $DIY_SH
         cd openwrt
-        ../$DIY_SH
+        #../$DIY_SH
 
     - name: SSH connection to Actions
       uses: P3TERX/debugger-action@master
